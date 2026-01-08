@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-brand-navy text-slate-200 font-sans antialiased overflow-x-hidden;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+/* Custom Components */
+@layer components {
+  /* Reveal Animation */
+  .vaaca-reveal {
+    @apply opacity-0 translate-y-10 transition-all duration-1000 ease-out;
+  }
+
+  .vaaca-reveal.active {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Tech Grid Background */
+  .tech-grid {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Scanline Effect */
+  .scanline {
+    @apply absolute top-0 left-0 w-full h-0.5 pointer-events-none opacity-30;
+    background: linear-gradient(to right, transparent, #0ea5e9, transparent);
+    animation: scan 6s linear infinite;
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    @apply relative overflow-hidden bg-gradient-to-r from-brand-gold to-brand-orange 
+           text-white font-display font-bold text-xs uppercase tracking-widest 
+           px-6 py-3 rounded-sm shadow-[0_0_20px_rgba(234,88,12,0.3)]
+           hover:shadow-[0_0_30px_rgba(234,88,12,0.5)] transition-all duration-300
+           inline-flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-brand-blue/10 border border-brand-blue/50 text-white
+           font-display font-bold text-xs uppercase tracking-widest
+           px-6 py-3 rounded-sm backdrop-blur-sm
+           hover:bg-brand-blue/20 hover:border-brand-blue transition-all duration-300
+           inline-flex items-center gap-2;
+  }
+
+  /* Card Styles */
+  .capability-card {
+    @apply relative bg-brand-navyLight/40 border border-white/5 p-8
+           hover:border-brand-blue/50 hover:bg-brand-navyLight/60
+           hover:-translate-y-2 hover:shadow-2xl
+           transition-all duration-500;
+  }
+
+  .industry-btn {
+    @apply relative p-8 text-left border-b border-white/5 
+           flex items-start gap-4 outline-none transition-all duration-300
+           hover:bg-brand-blue/5;
+  }
+
+  .industry-btn.active {
+    @apply bg-brand-blue/8;
+  }
+
+  /* Header Scroll Effect */
+  .header-scrolled {
+    @apply bg-brand-navy/95 backdrop-blur-md border-brand-navyLight shadow-lg py-3;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
+/* Keyframe Animations (backup for browsers that don't support Tailwind config) */
+@keyframes scan {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.5; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes tech-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(14, 165, 233, 0.1); 
+    border-color: rgba(255, 255, 255, 0.05); 
+  }
+  50% { 
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.3); 
+    border-color: rgba(14, 165, 233, 0.4); 
+  }
+}
